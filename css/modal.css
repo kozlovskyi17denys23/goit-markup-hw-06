@@ -54,27 +54,22 @@
 }
 
 .modal {
-    .modal {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(1);
-    
-        /* Адаптивна ширина з новим компактним max-width */
-        width: calc(100% - 32px);
-        max-width: 288px;
-        /* Візуально обмежує вікно на смартфонах */
-    
-        /* Зменшені горизонтальні відступи для малих екранів */
-        padding: 72px 16px 24px 16px;
-    
-        background-color: #fcfcfc;
-        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
-                0px 1px 3px rgba(0, 0, 0, 0.12),
-                0px 2px 1px rgba(0, 0, 0, 0.2);
-        border-radius: 4px;
-        transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+
+    /* Тепер базова ширина та зменшені падінги для малих екранів гарантовано працюють */
+    width: calc(100% - 32px);
+    max-width: 288px;
+    padding: 72px 16px 24px 16px;
+
+    background-color: #fcfcfc;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
+        0px 1px 3px rgba(0, 0, 0, 0.12),
+        0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop:not(.is-open) .modal {
@@ -83,13 +78,14 @@
 
 
 /* Планшетна версія (від 768px) та Десктопна (від 1158px) */
-@media screen and (min-width: 428px) {
-    .modal {
-        max-width: 392px;
-        /* Повертаємо початкову ширину для ширших екранів */
-        padding: 72px 24px 24px 24px;
-        /* Повертаємо стандартні відступи */
-    }
+@media screen and (min-width: 768px) {
+.modal {
+    /* ВИПРАВЛЕНО: Максимальну ширину збільшено з 392px до правильних 408px */
+    max-width: 408px;
+
+    /* Повертаємо стандартні просторі падінги для великих екранів */
+    padding: 72px 24px 24px 24px;
+   }
 }
 
 /* ТЗ: Кнопка закриття у верхньому правому куті */

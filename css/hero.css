@@ -25,17 +25,17 @@
 
 /* Головний заголовок — Мобільна версія */
 .hero-title {
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    /* Зменшений розмір шрифту для мобільного екрана */
     font-size: 36px;
     line-height: 1.11;
+    text-align: center;
     letter-spacing: 0.02em;
     color: #ffffff;
-
     max-width: 216px;
     margin-left: auto;
     margin-right: auto;
+    
+    /* Додаємо мобільний вертикальний відступ */
+    margin-bottom: 72px;
 }
 
 /* Кнопка замовлення послуги (залишається однаковою майже на всіх екранах) */
@@ -67,10 +67,12 @@
 }
 
 /* ================= MOBILE HERO ================= */
-.hero {
+.hero-section {
     max-width: 428px;
     margin-left: auto;
     margin-right: auto;
+    background-color: #2e2f46;
+    /* Фолбек колір */
     background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
         url('../images/hero-mobile.jpg');
     background-repeat: no-repeat;
@@ -78,46 +80,45 @@
     background-size: cover;
 }
 
-/* Mobile Retina */
+/* Mobile Retina 2x */
 @media screen and (min-resolution: 192dpi),
 screen and (-webkit-min-device-pixel-ratio: 2) {
-    .hero {
+    .hero-section {
         background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
             url('../images/hero-mobile@2x.jpg');
     }
 }
 
-/* ================= TABLET HERO ================= */
+/* ================= TABLET HERO (від 768px) ================= */
 @media screen and (min-width: 768px) {
-    .hero {
+    .hero-section {
         max-width: 768px;
         background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
             url('../images/hero-tablet.jpg');
     }
 
-    /* Tablet Retina */
+    /* Tablet Retina 2x */
     @media screen and (min-resolution: 192dpi),
     screen and (-webkit-min-device-pixel-ratio: 2) {
-        .hero {
+        .hero-section {
             background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
                 url('../images/hero-tablet@2x.jpg');
         }
     }
 }
 
-/* ================= DESKTOP HERO ================= */
+/* ================= DESKTOP HERO (від 1158px) ================= */
 @media screen and (min-width: 1158px) {
-    .hero {
+    .hero-section {
         max-width: 1440px;
-        /* Максимальна ширина самої секції Hero на десктопі */
         background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
             url('../images/hero-desktop.jpg');
     }
 
-    /* Desktop Retina */
+    /* Desktop Retina 2x */
     @media screen and (min-resolution: 192dpi),
     screen and (-webkit-min-device-pixel-ratio: 2) {
-        .hero {
+        .hero-section {
             background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
                 url('../images/hero-desktop@2x.jpg');
         }
@@ -145,7 +146,7 @@ screen and (-webkit-min-device-pixel-ratio: 2) {
         font-size: 56px;
         line-height: 1.07;
         max-width: 496px;
-        margin-bottom: 36px;
+        margin-bottom: 48px;
     }
 }
 

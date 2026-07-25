@@ -51,9 +51,12 @@ a {
 /* --- Загальна геометрія --- */
 .container {
     min-width: 320px;
-    max-width: 428px;
+    max-width: 320px;
+    /* Обмежуємо ширину контенту до 320px */
     padding-left: 16px;
+    /* Ваші задані внутрішні відступи */
     padding-right: 16px;
+    /* Ваші задані внутрішні відступи */
     margin-left: auto;
     margin-right: auto;
 }

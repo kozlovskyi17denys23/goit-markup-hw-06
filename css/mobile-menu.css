@@ -1,5 +1,7 @@
 /* css/mobile-menu.css */
 
+/* ================= 1, 2, 8. OVERLAY ТА ЛЕЙАУТ МЕНЮ ================= */
+/* Зовнішній overlay (id="mobile-menu"). Саме він має ховатися/показуватися */
 .mobile-menu {
     position: fixed;
     top: 0;
@@ -9,12 +11,6 @@
     background-color: #ffffff;
     z-index: 999;
 
-    /* Внутрішні відступи з макета мобільного меню */
-    padding: 72px 24px 40px 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
     /* Спочатку меню приховано за ТЗ */
     opacity: 0;
     visibility: hidden;
@@ -23,14 +19,39 @@
         visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Клас, який додається через JS */
+/* Клас, який додається через JS для відкриття */
 .mobile-menu.is-open {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
 }
 
-/* Кнопка закриття (хрестик) */
+/* Внутрішній контейнер, який лежить у вашому HTML. 
+   Переносимо flex-лейаут, висоту 100% та відступи сюди, щоб контент притискався до низу в'юпорту */
+.mobile-menu-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+
+    /* Внутрішні відступи з макета мобільного меню */
+    padding: 72px 24px 40px 16px;
+}
+
+/* ================= 3. ЯВНЕ ПРИХОВУВАННЯ НА ЕКРАНАХ ≥768px ================= */
+@media screen and (min-width: 768px) {
+
+    .mobile-menu,
+    #mobile-menu {
+        display: none !important;
+    }
+}
+
+/* ================= 4. КНОПКА ЗАКРИТТЯ (ХРЕСТИК) ================= */
+/* Синхронізуємо ваш клас .mobile-menu-close-btn з очікуваним .menu-close-btn */
+.mobile-menu-close-btn,
 .menu-close-btn {
     position: absolute;
     top: 24px;
@@ -42,7 +63,6 @@
     align-items: center;
     justify-content: center;
     background-color: transparent;
-    /* Робимо фон прозорим або сірим за макетом */
     border: 1px solid #e7e9fc;
     padding: 0;
     cursor: pointer;
@@ -50,41 +70,48 @@
         border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.mobile-menu-close-btn:hover,
+.mobile-menu-close-btn:focus,
 .menu-close-btn:hover,
 .menu-close-btn:focus {
     background-color: #404bbf;
     border: none;
 }
 
+.mobile-menu-close-icon,
 .menu-close-icon {
     fill: #2e2f42;
     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.mobile-menu-close-btn:hover .mobile-menu-close-icon,
+.mobile-menu-close-btn:focus .mobile-menu-close-icon,
 .menu-close-btn:hover .menu-close-icon,
 .menu-close-btn:focus .menu-close-icon {
     fill: #ffffff;
 }
 
-/* ================= ВНУТРІШНІ ЕЛЕМЕНТИ МЕНЮ ================= */
-
-/* Скидання стилів для списків всередині меню */
+/* ================= 5. НАВІГАЦІЯ (ВЕРХНЯ ЧАСТИНА) ================= */
+/* Скидаємо стилі для обох варіантів назв класів списків */
+.mobile-menu-list,
 .mobile-nav-list,
 .mobile-contacts-list,
+.mobile-socials,
 .mobile-socials-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-/* 1. Блок навігації (Верхня частина) */
+.mobile-menu-list,
 .mobile-nav-list {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    /* Відступи між пунктами меню */
+    /* Відступи 40px між пунктами навігації */
 }
 
+.mobile-menu-link,
 .mobile-nav-link {
     font-family: "Roboto", sans-serif;
     font-weight: 700;
@@ -96,11 +123,13 @@
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.mobile-menu-link:hover,
+.mobile-menu-link:focus,
+.mobile-menu-link.current,
 .mobile-nav-link:hover,
 .mobile-nav-link:focus,
 .mobile-nav-link.current {
     color: #404bbf;
-    /* Активний колір або стан ховера */
 }
 
 /* Блок контактів та соцмереж (Нижня частина меню) */
@@ -111,7 +140,7 @@
     /* Відступ між списком контактів та іконками соцмереж */
 }
 
-/* 2. Блок контактів */
+/* ================= 6. БЛОК КОНТАКТІВ (ТЕЛЕФОН ТА EMAIL) ================= */
 .mobile-contacts-list {
     display: flex;
     flex-direction: column;
@@ -124,7 +153,8 @@
     text-decoration: none;
 }
 
-/* Номер телефону — великий та акцентний за макетом */
+/* Номер телефону — великий, синій та акцентний (таргетує ваш клас .accent та очікуваний .phone) */
+.mobile-contacts-link.accent,
 .mobile-contacts-link.phone {
     font-weight: 700;
     font-size: 36px;
@@ -133,7 +163,8 @@
     color: #4d5ae5;
 }
 
-/* Емейл — менший та спокійніший за макетом */
+/* Емейл — менший та сірий (таргетує елемент без класу .accent або очікуваний .email) */
+.mobile-contacts-link:not(.accent),
 .mobile-contacts-link.email {
     font-weight: 500;
     font-size: 20px;
@@ -142,18 +173,18 @@
     color: #434455;
 }
 
-/* 3. Блок соціальних мереж у мобільному меню */
+/* ================= 7. СОЦІАЛЬНІ МЕРЕЖІ (ГОРИЗОНТАЛЬНИЙ FLEX-РЯД) ================= */
+/* Поєднуємо ваш клас .mobile-socials з очікуваним .mobile-socials-list */
+.mobile-socials,
 .mobile-socials-list {
     display: flex;
-    /* ТЗ: Рівномірний або фіксований відступ між іконками */
     gap: 40px;
+    /* Відступ між іконками */
 }
 
 .mobile-socials-item {
-    /* Жорсткі фіксовані розміри кола */
     width: 40px;
     height: 40px;
-    /* Обов'язково забороняємо флексам стискати елемент по ширині чи висоті */
     flex-shrink: 0;
 }
 
@@ -162,13 +193,9 @@
     height: 100%;
     background-color: #4d5ae5;
     border-radius: 50%;
-    /* Створює ідеальне коло */
-
-    /* Центрування SVG іконки строго посередині кола */
     display: flex;
     align-items: center;
     justify-content: center;
-
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -177,12 +204,9 @@
     background-color: #31d0aa;
 }
 
-/* Оформлення самої SVG іконки всередині */
 .mobile-socials-icon {
     width: 24px;
-    /* Перевірте розмір за макетом (зазвичай 24px або 16px) */
     height: 24px;
     fill: #f4f4fd;
-    /* Запобігає ламанню пропорцій самої іконки всередині */
     display: block;
 }
