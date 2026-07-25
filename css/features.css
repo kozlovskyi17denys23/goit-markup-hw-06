@@ -77,7 +77,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         /* Дозволяє карткам переноситися на другий рядок */
-        gap: 64px 24px;
+        gap: 72px 24px;
         /* 64px між рядками, 24px між колонками */
     }
 
@@ -127,9 +127,12 @@
     }
 
     .features-subtitle {
+        font-weight: 500;
         font-size: 20px;
-        /* На десктопі заголовок стає меншим за розміром */
         line-height: 1.2;
+        letter-spacing: 0.02em;
+        color: #2e2f42;
+        text-align: left;
     }
 
     .features-text {

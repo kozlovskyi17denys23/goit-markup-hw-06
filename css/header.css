@@ -40,6 +40,24 @@
     padding-bottom: 0;
 }
 
+/* Базові стилі для бургер-кнопки */
+.menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Приховуємо бургер-кнопку на планшетах та десктопах, якщо там є звичайне меню */
+@media screen and (min-width: 768px) {
+    .menu-toggle {
+        display: none;
+    }
+}
+
 /* Логотип */
 .logo-header {
     display: block;

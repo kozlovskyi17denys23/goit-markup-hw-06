@@ -33,9 +33,9 @@
     letter-spacing: 0.02em;
     color: #ffffff;
 
-    /* Обмеження ширини, щоб заголовок красиво вкладався на мобільному */
-    max-width: 288px;
-    margin: 0 auto 72px auto;
+    max-width: 216px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Кнопка замовлення послуги (залишається однаковою майже на всіх екранах) */
@@ -64,6 +64,64 @@
 .hero-button:hover,
 .hero-button:focus {
     background-color: #404bbf;
+}
+
+/* ================= MOBILE HERO ================= */
+.hero {
+    max-width: 428px;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
+        url('../images/hero-mobile.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Mobile Retina */
+@media screen and (min-resolution: 192dpi),
+screen and (-webkit-min-device-pixel-ratio: 2) {
+    .hero {
+        background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
+            url('../images/hero-mobile@2x.jpg');
+    }
+}
+
+/* ================= TABLET HERO ================= */
+@media screen and (min-width: 768px) {
+    .hero {
+        max-width: 768px;
+        background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
+            url('../images/hero-tablet.jpg');
+    }
+
+    /* Tablet Retina */
+    @media screen and (min-resolution: 192dpi),
+    screen and (-webkit-min-device-pixel-ratio: 2) {
+        .hero {
+            background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
+                url('../images/hero-tablet@2x.jpg');
+        }
+    }
+}
+
+/* ================= DESKTOP HERO ================= */
+@media screen and (min-width: 1158px) {
+    .hero {
+        max-width: 1440px;
+        /* Максимальна ширина самої секції Hero на десктопі */
+        background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
+            url('../images/hero-desktop.jpg');
+    }
+
+    /* Desktop Retina */
+    @media screen and (min-resolution: 192dpi),
+    screen and (-webkit-min-device-pixel-ratio: 2) {
+        .hero {
+            background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
+                url('../images/hero-desktop@2x.jpg');
+        }
+    }
 }
 
 

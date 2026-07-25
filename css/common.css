@@ -50,10 +50,30 @@ a {
 
 /* --- Загальна геометрія --- */
 .container {
-    width: 100%;
-    max-width: 1158px;
-    padding: 0 15px;
-    margin: 0 auto;
+    min-width: 320px;
+    max-width: 428px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Планшетний брейкпоінт */
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 768px;
+        /* Відступи залишаються такими ж, як на мобільних */
+    }
+}
+
+/* Десктопний брейкпоінт */
+@media screen and (min-width: 1158px) {
+    .container {
+        max-width: 1158px;
+        /* Змінені (збільшені) горизонтальні відступи для десктопа */
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 }
 
 .section {
