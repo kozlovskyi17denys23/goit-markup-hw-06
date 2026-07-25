@@ -1,0 +1,73 @@
+.hero-section {
+    /* Темный фоновый цвет для подстраховки */
+    background-color: #2e2f42;
+
+    /* Overlay (затемнение 70%) + путь к вашей картинке */
+    background-image: linear-gradient(rgba(46, 47, 66, 0.7),
+            rgba(46, 47, 66, 0.7)),
+        url("../images/hero-bg.jpg");
+    /* Проверьте и укажите ваш путь к картинке */
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    /* Ограничение максимальной ширины секции для больших мониторов */
+    max-width: 1440px;
+    margin: 0 auto;
+
+    /* Вертикальные отступы создают высоту секции */
+    padding: 188px 0;
+    text-align: center;
+}
+
+.hero-container {
+    /* Контейнер центрирует контент и ограничивает его по бокам */
+}
+
+/* Главный заголовок */
+.hero-title {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 1.07;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+
+    /* Ограничиваем ширину, чтобы текст переносился ровно на две строки, как на макете */
+    max-width: 496px;
+
+    /* Центрируем заголовок и делаем отступ снизу до кнопки */
+    margin: 0 auto 48px auto;
+}
+
+/* Кнопка заказа услуги */
+.hero-button {
+    display: inline-block;
+    min-width: 169px;
+    height: 56px;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4d5ae5;
+    /* Яркий синий цвет кнопки */
+
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+    cursor: pointer;
+
+    /* Плавный переход цвета при наведении */
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Эффекты ховера и фокуса для интерактивности */
+.hero-button:hover,
+.hero-button:focus {
+    background-color: #404bbf;
+    /* Более темный синий при наведении */
+}

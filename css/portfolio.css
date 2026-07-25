@@ -1,0 +1,106 @@
+/* ================= PORTFOLIO SECTION STYLES ================= */
+
+.portfolio-section {
+    padding: 120px 0;
+    background-color: #ffffff;
+}
+
+/* Флекс-сітка з переносом карток на наступні рядки */
+.portfolio-list {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 24px;
+    /* Проміжок між стовпчиками */
+    row-gap: 48px;
+    /* Проміжок між рядками карток */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Кожна картка займає рівно 1/3 ширини рядка */
+.portfolio-item {
+    flex-basis: calc((100% - 2 * 24px) / 3);
+    background-color: #ffffff;
+    /* Плавна поява тіні картки */
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Поява тіні при наведенні на всю картку */
+.portfolio-item:hover {
+    box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08),
+            0px 1px 1px 0px rgba(46, 47, 66, 0.16),
+            0px 1px 6px 0px rgba(46, 47, 66, 0.08);
+}
+
+/* Обгортка для картинки та прихованого тексту */
+.portfolio-thumb {
+    position: relative;
+    overflow: hidden;
+    /* Ховає синій текст, коли він знаходиться внизу за межами картки */
+}
+
+.portfolio-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Стилі для синього оверлея, який виїжджає */
+.portfolio-overlay-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #4d5ae5;
+    /* Синій колір */
+    color: #f4f4fd;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    padding: 40px 32px;
+    margin: 0;
+
+    /* Початковий стан: повністю зміщений вниз і схований */
+    transform: translateY(100%);
+    /* Плавний ефект руху */
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Коли ми наводимо на .portfolio-item, синій текст повертається на місце */
+.portfolio-item:hover .portfolio-overlay-text {
+    transform: translateY(0);
+}
+
+/* Рамка для тексту під картинкою */
+.portfolio-meta {
+    padding: 32px 16px;
+    border: 1px solid #e7e9fc;
+    border-top: none;
+    /* Прибираємо верхню рамку, щоб вона не дублювалася з межею фото */
+}
+
+/* Назва проекту */
+.portfolio-subtitle {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    color: #2e2f42;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+/* Категорія / Текст під назвою */
+.portfolio-text {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: #434455;
+    margin: 0;
+}
