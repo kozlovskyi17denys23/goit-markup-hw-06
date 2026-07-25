@@ -4,19 +4,16 @@
     --pressed-state-color: #404bbf;
     --dark-color: #2e2f42;
     --white-color: #ffffff;
-
-    /* ТЗ: Плавні переходи — 250ms cubic-bezier */
     --transition-slow: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Скидання стилів для списків (якщо не зроблено глобально) */
+/* Скидання стилів */
 .footer-socials {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-/* Допоміжний клас для приховування label (доступність для скрінрідерів) */
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -31,23 +28,30 @@
 }
 
 /* ==========================================================================
-   ОФОРМЛЕННЯ ФУТЕРА ЗА ВАШИМИ КЛАСАМИ
+   ОФОРМЛЕННЯ ФУТЕРА ЗА ПРИНЦИПОМ MOBILE FIRST
    ========================================================================== */
 
+/* Базові мобільні стилі (від 320px) */
 .page-footer-bottom {
     background-color: var(--dark-color);
-    padding: 100px 0;
+    padding: 96px 0;
+    /* Менші падінги на мобільному */
 }
 
+/* На мобільному всі блоки йдуть вертикально один під одним з великим відступом */
 .footer-container {
     display: flex;
-    align-items: baseline;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    gap: 72px;
+    /* Потужний вертикальний відступ між 3 блоками */
 }
 
-/* 1. Лівий блок з логотипом */
+/* 1. Блок з логотипом (центрування на мобільному) */
 .footer-info-block {
-    margin-right: 120px;
+    text-align: center;
+    margin-right: 0;
+    /* Скидаємо десктопний відступ */
 }
 
 .logo {
@@ -75,10 +79,17 @@
     color: #f4f4fd;
     letter-spacing: 0.02em;
     max-width: 264px;
-    margin: 0;
+    margin: 0 auto;
+    /* Центруємо текстовий блок */
+    text-align: left;
+    /* Сам текст всередині блоку вирівняний по лівому краю */
 }
 
-/* 2. Середній блок соцмереж */
+/* 2. Блок соцмереж (центрування на мобільному) */
+.footer-social-wrapper {
+    text-align: center;
+}
+
 .social-media-title {
     font-weight: 500;
     font-size: 16px;
@@ -92,6 +103,8 @@
 .footer-socials {
     display: flex;
     gap: 16px;
+    justify-content: center;
+    /* Центруємо кружечки */
 }
 
 .footer-socials-link {
@@ -102,23 +115,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* ТЗ: Плавний ефект ховера */
     transition: background-color var(--transition-slow);
 }
 
 .footer-socials-link:hover,
 .footer-socials-link:focus {
     background-color: #31d0aa;
-    /* Зелений колір при наведенні */
 }
 
 .footer-socials-icon {
     fill: #f4f4fd;
 }
 
-/* 3. Права форма підписки */
+/* 3. Форма підписки (вертикальна на мобільному) */
 .footer-subscribe-wrapper {
-    margin-left: auto;
+    width: 100%;
+    /* Займає всю ширину контенту на мобільному */
+    text-align: center;
+    margin-left: 0;
+    /* Скидаємо десктопний margin-left: auto */
 }
 
 .footer-subscribe-title {
@@ -131,13 +146,19 @@
     margin-top: 0;
 }
 
+/* На мобільному інпут та кнопка стають один під одним */
 .footer-subscribe-form {
     display: flex;
-    gap: 24px;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    /* Менший проміжок для вертикального стану */
 }
 
 .footer-subscribe-input {
-    width: 264px;
+    /* На мобільних пристроях інпут має бути гумовим під ширину контейнера, але не більше 398px */
+    width: 100%;
+    max-width: 398px;
     height: 40px;
     border: 1px solid var(--white-color);
     background-color: transparent;
@@ -149,7 +170,6 @@
     color: var(--white-color);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     outline: transparent;
-    /* ТЗ: Плавна зміна кольору рамки при фокусі */
     transition: border-color var(--transition-slow);
 }
 
@@ -172,11 +192,10 @@
     line-height: 1.5;
     letter-spacing: 0.04em;
     color: var(--white-color);
-    background-color: #4D5AE5;
+    background-color: var(--primary-brand-color);
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    /* ТЗ: Плавний перехід для кнопки */
     transition: background-color var(--transition-slow);
 }
 
@@ -185,8 +204,88 @@
     background-color: #31d0aa;
 }
 
-/* ТЗ: fill задано безпосередньо на svg елемент */
 .footer-subscribe-icon {
     margin-left: 16px;
     fill: var(--white-color);
+}
+
+
+/* ================= MEDIA QUERIES (Адаптація вгору) ================= */
+
+/* Планшетна версія (від 768px) */
+@media screen and (min-width: 768px) {
+
+    /* Збільшуємо загальний обмежувач для футера, щоб блоки стали поруч */
+    .footer-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        /* Дозволяє формі підписки впасти на другий рядок */
+        align-items: baseline;
+        justify-content: flex-start;
+        /* Вирівнювання по лівому краю */
+        gap: 72px 24px;
+        /* 72px між рядками, 24px між блоком лого та соцмереж */
+        padding-left: 108px;
+        /* Специфічний лівий відступ з макета планшета */
+    }
+
+    .footer-info-block {
+        text-align: left;
+    }
+
+    .footer-text {
+        margin: 0;
+    }
+
+    .footer-social-wrapper {
+        text-align: left;
+    }
+
+    .footer-socials {
+        justify-content: flex-start;
+    }
+
+    .footer-subscribe-wrapper {
+        width: auto;
+        text-align: left;
+    }
+
+    /* На планшеті інпут та кнопка стають в один горизонтальний рядок */
+    .footer-subscribe-form {
+        flex-direction: row;
+        gap: 24px;
+    }
+
+    .footer-subscribe-input {
+        width: 264px;
+        /* Повертаємо точну фіксовану ширину з макета */
+    }
+}
+
+/* Десктопна версія (від 1158px) */
+@media screen and (min-width: 1158px) {
+    .page-footer-bottom {
+        padding: 100px 0;
+        /* Повертаємо десктопні падінги */
+    }
+
+    .footer-container {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: baseline;
+        justify-content: flex-start;
+        /* Базове вирівнювання зліва */
+        gap: 0;
+        /* Скидаємо загальні проміжки для точкового позиціонування */
+    }
+
+    .footer-info-block {
+        margin-right: 120px;
+        /* Повертаємо фірмовий десктопний відступ */
+    }
+
+    .footer-subscribe-wrapper {
+        margin-left: auto;
+        /* Надійно штовхаємо форму підписки в крайній правий кут */
+    }
 }

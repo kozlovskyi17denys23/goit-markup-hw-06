@@ -1,51 +1,42 @@
 /* ================= FEATURES SECTION STYLES ================= */
 
-/* Основні відступи для всієї секції */
+/* Базові стилі для мобільних пристроїв (від 320px) */
 .features-section {
-    padding: 120px 0;
+    padding: 96px 0;
+    /* Менші акуратні відступи на мобільному */
 }
 
-/* Флекс-контейнер для побудови карток в один рядок */
+/* На мобільному картки вишикуються вертикально в одну колонку */
 .features-list {
     display: flex;
-    gap: 24px;
-    /* Відступи між картками за макетом */
+    flex-direction: column;
+    gap: 72px;
+    /* Великий вертикальний відступ між елементами на мобільному */
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-/* Розрахунок ширини для кожної з 4-х карток */
+/* На мобільному кожна картка займає 100% ширини контенту */
 .features-item {
-    flex-basis: calc((100% - 3 * 24px) / 4);
+    width: 100%;
 }
 
-/* Контейнер-рамка для іконки (сірий прямокутник) */
+/* ТЗ/Макет: На мобільних та планшетах іконки зазвичай приховані */
 .features-icon-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 112px;
-    background-color: #f4f4fd;
-    border-radius: 4px;
-    border: 1px solid #8e8f99;
-    /* Тонка сіра рамка навколо іконки */
-    margin-bottom: 8px;
-    /* Відступ знизу до заголовка h3 */
+    display: none;
 }
 
-/* Оформлення SVG іконки всередині контейнера */
-.features-icon {
-    fill: #2e2f42;
-}
-
-/* Підзаголовки (Strategy, Punctuality тощо) */
+/* Підзаголовки (Strategy, Punctuality тощо) — Мобільна версія */
 .features-subtitle {
     font-family: "Roboto", sans-serif;
     font-weight: 700;
-    font-size: 20px;
-    line-height: 1.2;
+    font-size: 36px;
+    /* Великий акцентний заголовок на мобільному */
+    line-height: 1.11;
     letter-spacing: 0.02em;
+    text-align: center;
+    /* Центрування тексту строго на мобільному */
     color: #2e2f42;
     margin-top: 0;
     margin-bottom: 8px;
@@ -54,7 +45,8 @@
 /* Основний текст опису */
 .features-text {
     font-family: "Roboto", sans-serif;
-    font-weight: 400;
+    font-weight: 500;
+    /* Трохи щільніший текст для мобільних пристроїв */
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.02em;
@@ -62,7 +54,7 @@
     margin: 0;
 }
 
-/* Стили для повного приховування h2 (доступність для скрінрідерів) */
+/* Технічний клас приховування заголовка секції для SEO (залишається без змін) */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -74,4 +66,74 @@
     clip-path: inset(100%);
     clip: rect(0 0 0 0);
     overflow: hidden;
+}
+
+
+/* ================= MEDIA QUERIES (Адаптація вгору) ================= */
+
+/* Планшетна версія (від 768px) */
+@media screen and (min-width: 768px) {
+    .features-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        /* Дозволяє карткам переноситися на другий рядок */
+        gap: 64px 24px;
+        /* 64px між рядками, 24px між колонками */
+    }
+
+    /* Розрахунок сітки на 2 колонки (для планшета) */
+    .features-item {
+        width: calc((100% - 24px) / 2);
+    }
+
+    .features-subtitle {
+        text-align: left;
+        /* Скасовуємо мобільне центрування */
+    }
+}
+
+/* Десктопна версія (від 1158px) */
+@media screen and (min-width: 1158px) {
+    .features-section {
+        padding: 120px 0;
+        /* Повертаємо десктопні великі падінги */
+    }
+
+    .features-list {
+        flex-wrap: nowrap;
+        /* Всі 4 картки суворо в один рядок */
+        gap: 24px;
+    }
+
+    /* Розрахунок сітки на 4 колонки (для десктопа) */
+    .features-item {
+        width: calc((100% - 3 * 24px) / 4);
+    }
+
+    /* ТЗ/Макет: Тільки від 1158px з'являються контейнери з іконками */
+    .features-icon-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 112px;
+        background-color: #f4f4fd;
+        border-radius: 4px;
+        border: 1px solid #8e8f99;
+        margin-bottom: 8px;
+    }
+
+    .features-icon {
+        fill: #2e2f42;
+    }
+
+    .features-subtitle {
+        font-size: 20px;
+        /* На десктопі заголовок стає меншим за розміром */
+        line-height: 1.2;
+    }
+
+    .features-text {
+        font-weight: 400;
+        /* Повертаємо стандартну товщину тексту */
+    }
 }

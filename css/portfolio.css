@@ -1,43 +1,43 @@
 /* ================= PORTFOLIO SECTION STYLES ================= */
 
+/* Базові стилі для мобільних пристроїв (від 320px) */
 .portfolio-section {
-    padding: 120px 0;
+    padding: 96px 0;
+    /* Менші падінги для мобільного екрана */
     background-color: #ffffff;
 }
 
-/* Флекс-сітка з переносом карток на наступні рядки */
+/* На мобільному картки шикуються в одну вертикальну колонку */
 .portfolio-list {
     display: flex;
-    flex-wrap: wrap;
-    column-gap: 24px;
-    /* Проміжок між стовпчиками */
-    row-gap: 48px;
-    /* Проміжок між рядками карток */
+    flex-direction: column;
+    gap: 48px;
+    /* Однакові відступи між картками по вертикалі */
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-/* Кожна картка займає рівно 1/3 ширини рядка */
+/* Кожна картка на мобільному займає 100% ширини контенту */
 .portfolio-item {
-    flex-basis: calc((100% - 2 * 24px) / 3);
+    width: 100%;
     background-color: #ffffff;
-    /* Плавна поява тіні картки */
     transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Поява тіні при наведенні на всю картку */
-.portfolio-item:hover {
+/* Поява тіні при наведенні або фокусі на всю картку */
+.portfolio-item:hover,
+.portfolio-item:focus-within {
     box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08),
-            0px 1px 1px 0px rgba(46, 47, 66, 0.16),
-            0px 1px 6px 0px rgba(46, 47, 66, 0.08);
+        0px 1px 1px 0px rgba(46, 47, 66, 0.16),
+        0px 1px 6px 0px rgba(46, 47, 66, 0.08);
 }
 
-/* Обгортка для картинки та прихованого тексту */
+/* Обгортка для картинки та оверлея */
 .portfolio-thumb {
     position: relative;
     overflow: hidden;
-    /* Ховає синій текст, коли він знаходиться внизу за межами картки */
+    /* Ховає синій текст за межами картинки */
 }
 
 .portfolio-image {
@@ -46,7 +46,7 @@
     height: auto;
 }
 
-/* Стилі для синього оверлея, який виїжджає */
+/* Стилі для синього оверлея (ТЗ: має бути на всіх ширинах, включно з мобільним) */
 .portfolio-overlay-text {
     position: absolute;
     top: 0;
@@ -69,8 +69,9 @@
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Коли ми наводимо на .portfolio-item, синій текст повертається на місце */
-.portfolio-item:hover .portfolio-overlay-text {
+/* ТЗ: Оверлей активується на всіх пристроях при ховері або фокусі */
+.portfolio-item:hover .portfolio-overlay-text,
+.portfolio-item:focus-within .portfolio-overlay-text {
     transform: translateY(0);
 }
 
@@ -79,7 +80,6 @@
     padding: 32px 16px;
     border: 1px solid #e7e9fc;
     border-top: none;
-    /* Прибираємо верхню рамку, щоб вона не дублювалася з межею фото */
 }
 
 /* Назва проекту */
@@ -103,4 +103,47 @@
     letter-spacing: 0.02em;
     color: #434455;
     margin: 0;
+}
+
+
+/* ================= MEDIA QUERIES (Адаптація вгору) ================= */
+
+/* Планшетна версія (від 768px) */
+@media screen and (min-width: 768px) {
+    .portfolio-list {
+        flex-direction: row;
+        /* Перебудова в горизонтальний ряд */
+        flex-wrap: wrap;
+        /* Дозволяє карткам переноситися нижче */
+        column-gap: 24px;
+        row-gap: 72px;
+        /* Збільшений вертикальний проміжок на планшеті */
+    }
+
+    /* Сітка на 2 колонки для планшета */
+    .portfolio-item {
+        width: calc((100% - 24px) / 2);
+    }
+}
+
+/* Десктопна версія (від 1158px) */
+@media screen and (min-width: 1158px) {
+    .portfolio-section {
+        padding: 120px 0;
+        /* Великі десктопні падінги */
+    }
+
+    .portfolio-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: 24px;
+        /* Тільки 2 зазори по 24px у ряду з 3-х карток */
+        row-gap: 48px;
+        /* Відступ між першим та другим рядком */
+    }
+
+    /* Сітка на 3 колонки для десктопа */
+    .portfolio-item {
+        width: calc((100% - 2 * 24px) / 3);
+    }
 }

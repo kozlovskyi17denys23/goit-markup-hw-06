@@ -1,4 +1,4 @@
-/* Базові скидання для списків та посилань (якщо їх ще немає у вашому проекті) */
+/* Базові скидання для списків та посилань */
 .nav-list,
 .contacts-list {
     list-style: none;
@@ -25,109 +25,178 @@
     background-color: #ffffff;
 }
 
-/* Флекс-контейнер для вирівнювання елементів в один рядок */
+/* Флекс-контейнер для вирівнювання елементів */
 .header-container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    /* Розводить логотип і бургер на мобільному */
     max-width: 1158px;
-    /* Або ваша ширина контейнера */
     margin: 0 auto;
-    padding: 0 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    /* ТЗ: Вертикальні падінги тут дорівнюють 0, щоб висоту формував логотип */
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 /* Логотип */
 .logo-header {
+    display: block;
+    /* ТЗ: Формування висоти хедера виконується за рахунок вертикальних падінгів на логотипі */
+    padding-top: 16px;
+    padding-bottom: 16px;
+
     font-family: "Raleway", sans-serif;
-    /* Поширений шрифт для цього макету */
     font-weight: 800;
     font-size: 18px;
     line-height: 1.17;
     letter-spacing: 0.03em;
     text-transform: uppercase;
     color: #2e2f42;
-    /* Темний колір для "Studio" */
-    margin-right: 76px;
-    /* Відступ від логотипу до меню */
+}
+
+/* Зміна падінгів логотипу на планшеті (від 768px) */
+@media screen and (min-width: 768px) {
+    .logo-header {
+        padding-top: 24px;
+        padding-bottom: 24px;
+        margin-right: 120px;
+        /* ТЗ: суворий відступ від лого до меню згідно з макетом */
+    }
+}
+
+/* Зміна падінгів логотипу на десктопі (від 1158px) */
+@media screen and (min-width: 1158px) {
+    .logo-header {
+        margin-right: 76px;
+    }
 }
 
 .logo-accent {
     color: #4d5ae5;
-    /* Синій колір для "Web" */
 }
 
-/* Навігація */
-.navigation {
+/* === СТИЛІ ДЛЯ МОБІЛЬНОЇ КНОПКИ (БУРГЕРА) === */
+.mobile-menu-open-btn {
     display: flex;
     align-items: center;
-    margin-right: auto;
-    /* Головний фокус: штовхає контакти в крайню праву сторону */
-}
-
-.nav-list {
-    display: flex;
-    gap: 40px;
-    /* Відступи між пунктами меню */
-    list-style: none;
+    justify-content: center;
     padding: 0;
-    margin: 0;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
-.nav-link {
-    position: relative;
-    display: block;
-    padding: 24px 0;
-    /* Вертикальні падінги для клікабельності */
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: 0.02em;
-    color: #2e2f42;
-    position: relative;
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+.mobile-menu-open-icon {
+    stroke: #2e2f42;
+    fill: none;
 }
 
-/* Ховер та фокус для посилань меню */
-.nav-link:hover,
-.nav-link:focus {
-    color: #404bbf;
+.mobile-menu-open-btn:hover .mobile-menu-open-icon,
+.mobile-menu-open-btn:focus .mobile-menu-open-icon {
+    stroke: #404bbf;
 }
 
-/* Синя лінія підкреслення для активного пункту (наприклад, Features) */
-/* Ви можете вручну додати клас .current в HTML тому посиланню, де зараз перебуває користувач */
-.nav-link.current {
-    color: #404bbf;
+/* Ховаємо бургер-кнопку на планшетах та десктопах (від 768px) */
+@media screen and (min-width: 768px) {
+    .mobile-menu-open-btn {
+        display: none;
+    }
 }
 
-.nav-link.current::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    /* Притискає лінію до нижньої рамки хедера */
-    width: 100%;
-    height: 4px;
-    background-color: #404bbf;
-    border-radius: 2px;
+/* === АДАПТАЦІЯ НАВІГАЦІЇ ТА КОНТАКТІВ === */
+
+/* Спочатку повністю ховаємо десктопну навігацію та контакти на мобільних */
+.navigation,
+.contacts {
+    display: none;
 }
 
-/* Контакти */
-.contacts-list {
-    display: flex;
-    gap: 40px;
-    /* Відступи між поштою та телефоном */
+/* Показуємо їх лише на екранах від 768px (планшети та десктопи) */
+@media screen and (min-width: 768px) {
+    .navigation {
+        display: flex;
+        align-items: center;
+    }
+
+    .contacts {
+        display: block;
+        margin-left: auto;
+        /* Штовхає контакти в крайню праву сторону на планшеті */
+    }
+
+    .nav-list {
+        display: flex;
+        gap: 40px;
+    }
+
+    .nav-link {
+        position: relative;
+        display: block;
+        padding: 24px 0;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: 0.02em;
+        color: #2e2f42;
+        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-link:hover,
+    .nav-link:focus {
+        color: #404bbf;
+    }
+
+    .nav-link.current {
+        color: #404bbf;
+    }
+
+    .nav-link.current::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        /* Сідає точно на border хедера */
+        width: 100%;
+        height: 4px;
+        background-color: #404bbf;
+        border-radius: 2px;
+    }
+
+    /* Контакти для планшета (вибудовуються в колонку за макетом) */
+    .contacts-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .contacts-link {
+        font-size: 12px;
+        line-height: 1.17;
+        letter-spacing: 0.04em;
+        color: #434455;
+        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .contacts-link:hover,
+    .contacts-link:focus {
+        color: #404bbf;
+    }
 }
 
-.contacts-link {
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: 0.02em;
-    color: #434455;
-    /* Сіріший колір для контактів */
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
+/* Контакти для десктопа (від 1158px стають в один рядок) */
+@media screen and (min-width: 1158px) {
+    .contacts-list {
+        flex-direction: row;
+        gap: 40px;
+    }
 
-/* Ховер та фокус для контактів */
-.contacts-link:hover,
-.contacts-link:focus {
-    color: #404bbf;
+    .contacts-link {
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: 0.02em;
+    }
 }

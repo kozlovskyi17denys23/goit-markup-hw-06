@@ -1,56 +1,53 @@
+/* ================= HERO SECTION STYLES ================= */
+
+/* Базові стилі для мобільних пристроїв (від 320px) */
 .hero-section {
-    /* Темный фоновый цвет для подстраховки */
     background-color: #2e2f42;
-
-    /* Overlay (затемнение 70%) + путь к вашей картинке */
-    background-image: linear-gradient(rgba(46, 47, 66, 0.7),
-            rgba(46, 47, 66, 0.7)),
-        url("../images/hero-bg.jpg");
-    /* Проверьте и укажите ваш путь к картинке */
-
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 
-    /* Ограничение максимальной ширины секции для больших мониторов */
-    max-width: 1440px;
+    /* Менші падінги для мобільного, щоб секція не була величезною */
+    padding: 72px 0;
+    text-align: center;
     margin: 0 auto;
 
-    /* Вертикальные отступы создают высоту секции */
-    padding: 188px 0;
-    text-align: center;
+    /* ТЗ: Респонсивний фон для мобільного (до 768px) з підтримкою x1 та x2 через image-set */
+    background-image: linear-gradient(rgba(46, 47, 66, 0.7),
+            rgba(46, 47, 66, 0.7)),
+        image-set(url("../images/hero-mobile.jpg") 1x,
+            url("../images/hero-mobile@2x.jpg") 2x);
 }
 
 .hero-container {
-    /* Контейнер центрирует контент и ограничивает его по бокам */
+    /* Використовує стандартний обмежувач падінгів */
 }
 
-/* Главный заголовок */
+/* Головний заголовок — Мобільна версія */
 .hero-title {
     font-family: "Roboto", sans-serif;
     font-weight: 700;
-    font-size: 56px;
-    line-height: 1.07;
+    /* Зменшений розмір шрифту для мобільного екрана */
+    font-size: 36px;
+    line-height: 1.11;
     letter-spacing: 0.02em;
     color: #ffffff;
 
-    /* Ограничиваем ширину, чтобы текст переносился ровно на две строки, как на макете */
-    max-width: 496px;
-
-    /* Центрируем заголовок и делаем отступ снизу до кнопки */
-    margin: 0 auto 48px auto;
+    /* Обмеження ширини, щоб заголовок красиво вкладався на мобільному */
+    max-width: 288px;
+    margin: 0 auto 72px auto;
 }
 
-/* Кнопка заказа услуги */
+/* Кнопка замовлення послуги (залишається однаковою майже на всіх екранах) */
 .hero-button {
-    display: inline-block;
+    display: block;
+    /* Зручніше для центрування марджинами */
     min-width: 169px;
     height: 56px;
-    padding: 16px 32px;
     border: none;
     border-radius: 4px;
     background-color: #4d5ae5;
-    /* Яркий синий цвет кнопки */
+    margin: 0 auto;
 
     font-family: "Roboto", sans-serif;
     font-weight: 500;
@@ -60,14 +57,56 @@
     color: #ffffff;
     cursor: pointer;
 
-    /* Плавный переход цвета при наведении */
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
 }
 
-/* Эффекты ховера и фокуса для интерактивности */
 .hero-button:hover,
 .hero-button:focus {
     background-color: #404bbf;
-    /* Более темный синий при наведении */
+}
+
+
+/* ================= MEDIA QUERIES (Адаптація вгору) ================= */
+
+/* Планшетна версія (від 768px) */
+@media screen and (min-width: 768px) {
+    .hero-section {
+        /* Збільшуємо вертикальні відступи */
+        padding: 112px 0;
+
+        /* ТЗ: Окремий фон для планшета у версіях @1x та @2x */
+        background-image: linear-gradient(rgba(46, 47, 66, 0.7),
+                rgba(46, 47, 66, 0.7)),
+            image-set(url("../images/hero-tablet.jpg") 1x,
+                url("../images/hero-tablet@2x.jpg") 2x);
+    }
+
+    .hero-title {
+        /* Збільшуємо шрифт до десктопного */
+        font-size: 56px;
+        line-height: 1.07;
+        max-width: 496px;
+        margin-bottom: 36px;
+    }
+}
+
+/* Десктопна версія (від 1158px) */
+@media screen and (min-width: 1158px) {
+    .hero-section {
+        /* Максимальні падінги з макета */
+        padding: 188px 0;
+        /* ТЗ: Обмеження для великих моніторів (до 1440px) */
+        max-width: 1440px;
+
+        /* ТЗ: Окремий фон для десктопа у версіях @1x та @2x */
+        background-image: linear-gradient(rgba(46, 47, 66, 0.7),
+                rgba(46, 47, 66, 0.7)),
+            image-set(url("../images/hero-desktop.jpg") 1x,
+                url("../images/hero-desktop@2x.jpg") 2x);
+    }
+
+    .hero-title {
+        margin-bottom: 48px;
+    }
 }
