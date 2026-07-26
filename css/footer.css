@@ -280,33 +280,32 @@
         /* Повертаємо десктопні падінги */
     }
 
+    /* Головний контейнер футера */
     .footer-container {
-        /* Скидаємо планшетний лівий відступ */
-            padding-left: 15px;
-            padding-right: 15px;
-        
-            /* Робимо так, щоб елементи займали всю ширину контейнера */
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            gap: 0;
-            /* Розподіляє блоки по всій ширині */
-            width: 100%;
+        display: flex;
+        align-items: baseline;
+        /* Вирівнює контент блоків по базовій лінії тексту */
+        justify-content: flex-start;
+        /* Скасовує space-between та фіксує блоки зліва */
+        gap: 0;
+        /* Повністю прибирає планшетний gap */
     }
-
-        /* Скасовуємо мобільні/планшетні марджини для блоків футера */
-    .footer-logo-wrapper,
-    .footer-social-media {
-            margin-bottom: 0;
-        }
-
+    
+    /* 1. Блок з логотипом та текстом "Increase the flow..." */
     .footer-info-block {
         margin-right: 120px;
-        /* Повертаємо фірмовий десктопний відступ */
+        /* Фіксована відстань до блоку соцмереж */
     }
-
-    .footer-subscribe-wrapper {
-        margin-left: auto;
-        /* Надійно штовхаємо форму підписки в крайній правий кут */
+    
+    /* 2. Блок "Social media" */
+    .footer-social-block {
+        margin-right: 80px;
+        /* Фіксована відстань до блоку підписки */
     }
-}
+    
+    /* 3. Блок "Subscribe" */
+    .footer-subscribe-block {
+        margin-right: 0;
+        /* Останньому блоку відступ не потрібен */
+    }
+         }
