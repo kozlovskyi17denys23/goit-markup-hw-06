@@ -21,6 +21,7 @@
 
 .hero-container {
     /* Використовує стандартний обмежувач падінгів */
+    width: 320px;
 }
 
 /* Головний заголовок — Мобільна версія */
@@ -146,7 +147,7 @@ screen and (-webkit-min-device-pixel-ratio: 2) {
         font-size: 56px;
         line-height: 1.07;
         max-width: 496px;
-        margin-bottom: 48px;
+        margin-bottom: 36px;
     }
 }
 

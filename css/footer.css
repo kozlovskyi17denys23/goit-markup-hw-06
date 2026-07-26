@@ -289,6 +289,7 @@
             display: flex;
             align-items: baseline;
             justify-content: space-between;
+            gap: 0;
             /* Розподіляє блоки по всій ширині */
             width: 100%;
     }
